@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -38,10 +41,61 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Hello World"),
+            MyCard(),
           ],
         ),
       ),
     );
+  }
+}
+
+class MyCard extends StatefulWidget {
+
+  @override
+  _MyCardState createState() => _MyCardState();
+}
+
+class _MyCardState extends State<MyCard> {
+
+  String text;
+//  double _width = 100;
+//  double _height = 100;
+  Color _color = Colors.green;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(getRandomValue(max: 50))),
+        ),
+        elevation: 4,
+        color: _color,
+        borderOnForeground: true,
+        child: Padding(
+            padding: EdgeInsets.all(10),
+            child: FlatButton(
+              child: Text("$text", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
+              onPressed: () {
+                setState(() {
+                  text = DateTime.now().toString();
+                  _color = Color.fromRGBO(getRandomInt(), getRandomInt(), getRandomInt(), 1);
+//                  _width = getRandomValue(max: 100);
+//                  _height = getRandomValue(max: 100);
+                });
+              },
+            ),
+        ),
+      ),
+    );
+  }
+
+  double getRandomValue({max: int}) {
+    return Random().nextDouble() * max;
+  }
+
+  int getRandomInt() {
+    int r = Random().nextInt(255);
+    return r;
   }
 }
