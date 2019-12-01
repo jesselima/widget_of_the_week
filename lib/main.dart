@@ -32,15 +32,33 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("SafeArea"),
+        title: Text("Wrap"),
       ),
       body: Center(
-        child: Column(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Hello World"),
+            MyCard(),
+            MyCard(),
+            MyCard(),
+            MyCard(),
+            MyCard(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class MyCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Card(
+        elevation: 4,
+        color: Colors.blueAccent,
+        borderOnForeground: true,
+        child: Padding(padding: EdgeInsets.all(10), child: Text("Hello World :D")),
       ),
     );
   }
