@@ -35,8 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("Wrap"),
       ),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Wrap(
           children: <Widget>[
             MyCard(),
             MyCard(),
