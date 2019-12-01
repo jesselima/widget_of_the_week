@@ -30,16 +30,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("SafeArea"),
-      ),
-      body: SafeArea(
-        child: Center(
-          child: ListView(
-            children: List.generate(100, (index) => Text("${index+1} Some Text Here")),
-          ),
+    /**
+     * It's a good practice to use SafeArea at the Scaffold to cover the whole screen
+      */
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("SafeArea"),
         ),
+        body: Center(
+            child: ListView(
+              children: List.generate(100, (index) => Text("${index+1} Some Text Here")),
+            ),
+          ),
       ),
     );
   }
