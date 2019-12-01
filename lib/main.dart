@@ -35,11 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("SafeArea"),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("Hello World"),
-          ],
+        child: ListView(
+          children: List.generate(100, (index) => Text("${index+1} Some Text Here")),
         ),
       ),
     );
