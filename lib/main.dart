@@ -34,9 +34,11 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text("SafeArea"),
       ),
-      body: Center(
-        child: ListView(
-          children: List.generate(100, (index) => Text("${index+1} Some Text Here")),
+      body: SafeArea(
+        child: Center(
+          child: ListView(
+            children: List.generate(100, (index) => Text("${index+1} Some Text Here")),
+          ),
         ),
       ),
     );
