@@ -36,6 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Wrap(
+          direction: Axis.vertical,
           children: <Widget>[
             MyCard(),
             MyCard(),
@@ -57,7 +58,7 @@ class MyCard extends StatelessWidget {
         elevation: 4,
         color: Colors.blueAccent,
         borderOnForeground: true,
-        child: Padding(padding: EdgeInsets.all(10), child: Text("Hello World :D")),
+        child: Padding(padding: EdgeInsets.all(50), child: Text("Hello World :D")),
       ),
     );
   }
