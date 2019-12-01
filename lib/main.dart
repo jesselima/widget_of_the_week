@@ -57,14 +57,18 @@ class MyCard extends StatefulWidget {
 
 class _MyCardState extends State<MyCard> {
 
-  String text;
-//  double _width = 100;
-//  double _height = 100;
+  String text = "Click me";
+  double _width = 250;
+  double _height = 250;
   Color _color = Colors.green;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: Duration(seconds: 1),
+      curve: Curves.linearToEaseOut,
+      width: _width,
+      height: _height,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(getRandomValue(max: 50))),
@@ -78,10 +82,15 @@ class _MyCardState extends State<MyCard> {
               child: Text("$text", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
               onPressed: () {
                 setState(() {
-                  text = DateTime.now().toString();
-                  _color = Color.fromRGBO(getRandomInt(), getRandomInt(), getRandomInt(), 1);
-//                  _width = getRandomValue(max: 100);
-//                  _height = getRandomValue(max: 100);
+                  _width = getRandomValue(max: 300);
+                  if(_width < 130) _width = 130;
+
+                  _height = getRandomValue(max: 300);
+                  if(_height < 100) _height = 100;
+
+                  text = DateTime.now().millisecond.toString();
+                  _color = Color.fromRGBO(getRandomColorInt(), getRandomColorInt(), getRandomColorInt(), 1);
+
                 });
               },
             ),
@@ -94,7 +103,7 @@ class _MyCardState extends State<MyCard> {
     return Random().nextDouble() * max;
   }
 
-  int getRandomInt() {
+  int getRandomColorInt() {
     int r = Random().nextInt(255);
     return r;
   }
