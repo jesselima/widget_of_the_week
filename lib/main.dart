@@ -36,13 +36,17 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Wrap(
-          direction: Axis.vertical,
+          alignment: WrapAlignment.start,
+//          alignment: WrapAlignment.end,
+//          alignment: WrapAlignment.spaceEvenly,
+//          alignment: WrapAlignment.center,
+          spacing: 10,
+          runSpacing: 20,
           children: <Widget>[
             MyCard(),
             MyCard(),
             MyCard(),
-            MyCard(),
-            MyCard(),
+
           ],
         ),
       ),
@@ -51,6 +55,10 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class MyCard extends StatelessWidget {
+
+  final String text;
+  MyCard({this.text = "Hello World :D"});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -58,7 +66,7 @@ class MyCard extends StatelessWidget {
         elevation: 4,
         color: Colors.blueAccent,
         borderOnForeground: true,
-        child: Padding(padding: EdgeInsets.all(50), child: Text("Hello World :D")),
+        child: Padding(padding: EdgeInsets.all(50), child: Text(text)),
       ),
     );
   }
