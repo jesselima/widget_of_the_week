@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_of_the_week/my_card.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,7 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Hello World"),
+            MyCard(cardColor: Colors.amberAccent, cardText: "Passed Text",),
+            MyCard(),
           ],
         ),
       ),
