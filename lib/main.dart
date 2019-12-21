@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:widget_of_the_week/movie_db_api.dart';
 import 'package:widget_of_the_week/my_card.dart';
+import 'package:http/http.dart' as http;
 
 void main() => runApp(MyApp());
 
@@ -39,8 +43,22 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            MyCard(cardColor: Colors.amberAccent, cardText: "Passed Text",),
-            MyCard(),
+            FutureBuilder(
+              future: http.get(MovieDbApi.getMovieDetails()),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+
+                  if(snapshot.hasError) {
+                    return MyCard(cardText: "Error", cardColor: Colors.red);
+                  } else {
+                    var response = jsonEncode(snapshot.data.toString());
+                    return MyCard(cardText: response, cardColor: Colors.blueGrey,);
+                  }
+                } else {
+                  return CircularProgressIndicator();
+                }
+              },
+            ),
           ],
         ),
       ),
