@@ -4,24 +4,24 @@ import 'package:widget_of_the_week/my_card.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
+
+    final appTitle = 'Opacity Demo';
+
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'SafeArea'),
+      title: appTitle,
+      home: MyHomePage(title: appTitle),
     );
   }
 }
 
+
 class MyHomePage extends StatefulWidget {
 
-  MyHomePage({Key key, this.title}) : super(key: key);
-
   final String title;
+
+  MyHomePage({Key key, this.title}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -29,20 +29,29 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  bool _visible = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("SafeArea"),
+        title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            MyCard(cardColor: Colors.amberAccent, cardText: "Passed Text",),
-            MyCard(),
-          ],
+        child: AnimatedOpacity(
+          opacity: _visible ? 1.0 : 0.0,
+          duration: Duration(milliseconds: 500),
+          child: MyCard(cardText: "Hello World!!!", cardColor: Colors.green)
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            _visible = !_visible;
+          });
+        },
+        tooltip: 'Toggle Opacity',
+        child: Icon(Icons.flip),
       ),
     );
   }
