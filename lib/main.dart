@@ -29,6 +29,20 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  static final _controller = PageController(
+    initialPage: 1
+  );
+
+  final pageView = PageView(
+    controller: _controller,
+    scrollDirection: Axis.horizontal,
+    children: <Widget>[
+      MyCard(cardColor: Colors.amberAccent, cardText: "Page 1"),
+      MyCard(cardColor: Colors.blueAccent, cardText: "Page 2"),
+      MyCard(cardColor: Colors.lightGreen, cardText: "Page 3"),
+    ],
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,13 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("SafeArea"),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            MyCard(cardColor: Colors.amberAccent, cardText: "Passed Text",),
-            MyCard(),
-          ],
-        ),
+        child: pageView
       ),
     );
   }
