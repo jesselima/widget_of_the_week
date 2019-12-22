@@ -35,15 +35,68 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text("SafeArea"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            MyCard(cardColor: Colors.amberAccent, cardText: "Passed Text",),
-            MyCard(),
-          ],
-        ),
-      ),
+      body: Table(
+        border: TableBorder.all(color: Colors.red),
+//        columnWidths: {1: FractionColumnWidth(.4)},
+        children: [
+          TableRow(
+            children: [
+              TableCell(
+                child:
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Rank", style: TextStyle(
+                        fontSize: 18,
+                        fontWeight:
+                        FontWeight.bold,
+                        backgroundColor: Colors.blueGrey[100])
+                    ),
+                ),
+              ),
+              TableCell(
+                child:
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Mark", style: TextStyle(
+                        fontSize: 18,
+                        fontWeight:
+                        FontWeight.bold,
+                        backgroundColor: Colors.blueGrey[100])
+                    ),
+                ),
+              ),
+              TableCell(child:
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child:
+                  Text("Name", style: TextStyle(
+                      fontSize: 18,
+                      fontWeight:
+                      FontWeight.bold,
+                      backgroundColor: Colors.blueGrey[100])
+                  ),
+              ),
+              ),
+            ]
+          ),
+          TableRow(
+              children: [
+                TableCell(child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("1",),
+                )),
+                TableCell(child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("2,32",),
+                )),
+                TableCell(child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Jesse Lima",),
+                )),
+              ]
+          )
+        ],
+      )
     );
   }
 }
